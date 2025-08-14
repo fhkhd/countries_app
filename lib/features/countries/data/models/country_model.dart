@@ -5,6 +5,7 @@ class CountryModel extends Country {
     required super.name,
     required super.capital,
     required super.flag,
+    required super.code,
   });
 
   factory CountryModel.fromJson(Map<String, dynamic> json) {
@@ -12,6 +13,7 @@ class CountryModel extends Country {
       name: json['name'] ?? 'null',
       capital: json['capital'] ?? 'null',
       flag: json['flag'] ?? 'null',
+      code: json['code'] ?? 'null',
     );
   }
 }

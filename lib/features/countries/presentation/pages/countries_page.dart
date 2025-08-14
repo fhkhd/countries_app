@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/cache/app_cache_managers.dart';
 import '../bloc/countries_bloc.dart';
+import '../widgets/country_list_item.dart';
 
 class CountriesPage extends StatefulWidget {
   const CountriesPage({super.key});
@@ -12,10 +14,16 @@ class CountriesPage extends StatefulWidget {
 
 class _CountriesPage extends State<CountriesPage> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text("Countries"),
       ),
       body: BlocConsumer<CountriesBloc, CountriesState>(
           listener: (BuildContext context, CountriesState state) {
@@ -38,17 +46,22 @@ class _CountriesPage extends State<CountriesPage> {
             ),
           ),
           loading: () => const Center(child: CircularProgressIndicator()),
-          loaded: (countries) => ListView.builder(
-              itemBuilder: (context, index) => const Card(
-                    child: Row(
-                      children: [
-                        Text("image"),
-                        Column(
-                          children: [Text('country'), Text('capti')],
-                        )
-                      ],
-                    ),
-                  )),
+          loaded: (countries) => CustomScrollView(
+            slivers: [
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final country = countries[index];
+                    return CountryListItem(
+                      country: country,
+                      cacheManager: AppCacheManagers.countryFlags,
+                    );
+                  },
+                  childCount: countries.length,
+                ),
+              ),
+            ],
+          ),
           error: (message) => Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
