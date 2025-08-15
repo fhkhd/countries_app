@@ -1,16 +1,25 @@
-# countries_app
+# 🌍 Countries App
 
-A new Flutter project.
+اپلیکیشنی ساده با **Flutter** برای نمایش لیست کشورها، پایتخت و پرچم آن‌ها.  
+پیاده‌سازی با **Clean Architecture** و **Bloc** برای مدیریت وضعیت.
 
-## Getting Started
+## ✨ ویژگی‌ها
 
-This project is a starting point for a Flutter application.
+- 📝 دریافت داده‌ها از فایل **JSON آنلاین**
+- 🏴 نمایش پرچم کشورها با **کشینگ تصاویر**
+- ⏳ مدیریت وضعیت‌ها: **لودینگ، نمایش داده و خطا**
+- ⚡ استفاده از **Bloc** و **Freezed**
+- 🔧 دسته‌بندی خطاها با **Failure**: Network, Server, Parsing, Unknown
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠 تکنولوژی‌ها
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter**
+- **Bloc / Freezed**
+- **Dio**
+- **CachedNetworkImage** (کشینگ تصاویر با Silver و AppCacheManagers)
+- **fpdart** (Either / مدیریت خطا)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 💡 نکات حرفه‌ای
+
+- تصاویر با **fadeIn/fadeOut** کوتاه و سریع نمایش داده می‌شوند
+- **Hero** برای کنترل Flag ها
